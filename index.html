@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaya Terry - Copy & Brand Leader Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fff;
+            scroll-behavior: smooth;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .tagline {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .campaign-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .campaign-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .campaign-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .campaign-image.emoji-only {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .campaign-content {
+            padding: 2rem;
+        }
+
+        .campaign-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .campaign-content p {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .campaign-stat {
+            background: #f0f4ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .campaign-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .campaign-link:hover {
+            color: #764ba2;
+        }
+
+        .campaign-link::after {
+            content: " →";
+        }
+
+        .skills {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        .skill-category li::before {
+            content: "→ ";
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .experience {
+            background: #f8f9fa;
+        }
+
+        .experience-item {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-item h3 {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .company {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .date {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.75rem;
+            color: #444;
+        }
+
+        .highlights {
+            background: white;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        .highlight-box p {
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        footer {
+            background: #667eea;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .campaign-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Kaya Terry</h1>
+            <p class="tagline">Copy and Brand Leader | Strategic Communications</p>
+            <div class="contact-links">
+                <a href="mailto:kayaterry1@gmail.com">Email</a>
+                <a href="tel:+447414929122">Call</a>
+                <a href="https://www.linkedin.com/in/kaya-terry-55725192/" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="white">
+                <path d="M15 20 L10 15 L11.5 13.5 L15 17 L18.5 13.5 L20 15 Z"/>
+            </svg>
+        </div>
+    </div>
+
+    <section class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>Senior Copy and Brand Leader with over ten years' experience across communications, journalism, consumer media, beauty, lifestyle and purpose-led organisations. I specialise in shaping brand narratives, leading integrated campaigns and translating complex information into clear, culturally relevant storytelling that drives engagement, trust and measurable impact.</p>
+
+            <p>Currently leading copy and messaging across Marketing and Communications at Air Ambulance Charity Kent Surrey Sussex (KSS), delivering national campaigns, flagship publications and high-profile partnerships, including a Netflix documentary collaboration. Previously held a senior editorial role at Hearst, where I led teams, launched new formats and delivered content at scale across print, digital, social and live platforms.</p>
+
+            <p>Before Hearst, I worked at MailOnline, the UK's most-read English-language news website, where I launched the live blog format following Russia's invasion of Ukraine in February 2022. I led strategy across social media and digital platforms for exclusive news stories, and served as the royal correspondent for the website, with a proven ability to identify designers and trends worn by members of the royal family that would resonate with global audiences.</p>
+
+            <p>I bring together creative thinking, editorial rigour and strategic insight. My strengths include campaign development, brand storytelling, digital strategy, stakeholder management and earned media. I thrive in fast-paced environments where culture, audience insight, and purpose meet, and I'm driven to create communications that strengthen brands and deliver meaningful impact.</p>
+        </div>
+    </section>
+
+    <section class="highlights">
+        <h2>Career Highlights</h2>
+        <div class="highlights-grid">
+            <div class="highlight-box">
+                <h3>£500K+</h3>
+                <p>Raised through Summer Raffle campaign storytelling</p>
+            </div>
+            <div class="highlight-box">
+                <h3>40%</h3>
+                <p>Organic engagement increase with Suddenly Single podcast</p>
+            </div>
+            <div class="highlight-box">
+                <h3>Over 2M</h3>
+                <p>Supporters reached through KSS campaigns</p>
+            </div>
+            <div class="highlight-box">
+                <h3>21%</h3>
+                <p>Click-through rate on Cosmo's first TikTok shopping event</p>
+            </div>
+            <div class="highlight-box">
+                <h3>Ukraine Live Blog</h3>
+                <p>Created MailOnline's live blog format - most popular daily story and still in use</p>
+            </div>
+            <div class="highlight-box">
+                <h3>NHS Newsletter Launch</h3>
+                <p>Redesigned News@Medway newsletter - dramatically increased engagement</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="campaigns">
+        <h2>Featured Campaigns</h2>
+        
+        <div class="campaign-grid">
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/6pVVnVSR/critical.jpg');">
+                </div>
+                <div class="campaign-content">
+                    <h3>Restart A Heart Day 2025</h3>
+                    <p>Led creative development and execution for KSS's Restart A Heart Day campaign in partnership with Brighton & Hove Albion FC. Created campaign assets, coordinated on-site content capture at the Amex Stadium, and conducted interviews with footballers and medical teams.</p>
+                    <p>Delivered integrated campaign content across multiple channels, driving awareness of cardiac arrest prevention and CPR training while strengthening KSS's community partnerships.</p>
+                    <a href="https://aakss.org.uk/teaming-up-with-brighton-and-hove-albion/" target="_blank" class="campaign-link">View campaign</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image emoji-only">🍕</div>
+                <div class="campaign-content">
+                    <h3>The Greedy Girls</h3>
+                    <p>Created and launched The Greedy Girls, an insight-driven social-first campaign spotlighting the latest food and drink launches. Developed a content format that showcased new products across print and digital channels, building on the success of Cosmopolitan's Takeaway Tuesdays.</p>
+                    <p>The concept proved so successful that Cosmopolitan adopted it as a dedicated TikTok series, demonstrating my ability to identify cultural trends and create platform-native content that drives engagement.</p>
+                    <a href="https://www.tiktok.com/@twogreedygirls/video/7328117957760961825" target="_blank" class="campaign-link">Watch on TikTok</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/0yGGDG3p/heores_awards.jpg');">
+                </div>
+                <div class="campaign-content">
+                    <h3>Best Heroes Awards</h3>
+                    <p>Oversaw all aspects of Best magazine's annual celebration honouring everyday heroes. Managed full event production from concept to execution, including logistics, venue coordination at St Ermin's Hotel Westminster, scripting, multimedia content creation and sponsor relations.</p>
+                    <p>Built trusted relationships with award winners including Kate Garraway and Cheryl Korbel (mother of Olivia, whose death led to Olivia's Law), providing sensitive support while adapting their stories across formats. Produced powerful video tributes and photography, managed live social media coverage, and led post-event PR strategy.</p>
+                    <div class="campaign-stat">Most successful Heroes event on record | 78% engagement increase | National broadcast coverage</div>
+                    <a href="https://www.youtube.com/watch?v=VFN4GqNQuJU&feature=youtu.be" target="_blank" class="campaign-link">Watch event highlights</a><br>
+                    <a href="https://www.thesun.co.uk/tv/20153582/best-heroes-awards-strictly-love-island-loose-women/" target="_blank" class="campaign-link">The Sun coverage</a><br>
+                    <a href="https://www.facebook.com/bestmagazine/videos/2639909633037439/" target="_blank" class="campaign-link">Red carpet coverage</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/pLQQzQ7Z/Summer_raffle.jpg');">
+                </div>
+                <div class="campaign-content">
+                    <h3>Summer Rapid Response Raffle</h3>
+                    <p>Developed storytelling and messaging for a multi-channel fundraising campaign, leading patient interviews and shaping emotionally compelling content that showed the real human impact behind every donation.</p>
+                    <p>Launched across social media, website, and direct mail with consistent supporter journeys.</p>
+                    <div class="campaign-stat">Raised over £500,000 (June-Sept 2024)</div>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/6pVVnVSR/critical.jpg');">
+                </div>
+                <div class="campaign-content">
+                    <h3>Netflix Documentary Collaboration</h3>
+                    <p>Led campaign collaboration with Netflix for the medical documentary series Critical: Between Life and Death, coordinating cross-team communications between Netflix's PR and production teams and internal stakeholders at KSS.</p>
+                    <p>Managed media opportunities, aligned messaging, and created internal engagement content including newsletter features and staff viewing events, strengthening public awareness of KSS's critical care work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="campaigns" style="background: white;">
+        <h2>Social & Digital Content</h2>
+        
+        <div class="campaign-grid">
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/cL77w7jc/suddenly_single.jpg');">
+                </div>
+                <div class="campaign-content">
+                    <h3>Suddenly Single Podcast</h3>
+                    <p>Co-created and launched Best magazine's flagship podcast to modernise the brand and diversify revenue streams. Identified, booked and prepared high-profile guests including Katie Price and Lady C, driving consistent national media coverage.</p>
+                    <p>Produced and edited cut-downs for Instagram, TikTok and YouTube, with YouTube becoming the strongest growth driver.</p>
+                    <div class="campaign-stat">40% uplift in organic engagement | 2.5 million video views</div>
+                    <a href="https://www.youtube.com/watch?v=LYxCYSavCFE" target="_blank" class="campaign-link">Watch series</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/kgMvm1fF/cosmopolitan_logo.webp');">
+                </div>
+                <div class="campaign-content">
+                    <h3>Cosmopolitan TikTok Live Shopping</h3>
+                    <p>Spearheaded Cosmopolitan's first-ever live beauty shopping event on TikTok, delivering an interactive experience for 3,000 viewers. Surpassed TikTok benchmarks in viewing duration and order value.</p>
+                    <div class="campaign-stat">21% click-through rate | 25% first-time buyers</div>
+                    <a href="https://www.tiktok.com/@cosmopolitanuk?lang=en" target="_blank" class="campaign-link">Visit Cosmopolitan UK TikTok</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/13RrQCJr/snapchat.png');">
+                </div>
+                <div class="campaign-content">
+                    <h3>MailOnline Snapchat Strategy</h3>
+                    <p>Managed bi-weekly Snapchat shifts for MailOnline, curating content for both UK and US audiences. Used real-time analytics to track performance, monitor high-engagement content, and identify trending Google searches to inform content selection.</p>
+                    <p>Ensured the platform led on news engagement for younger demographics by adapting editorial strategy based on audience-specific data and platform behavior.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="campaigns" style="background: #f8f9fa;">
+        <h2>Editorial Excellence</h2>
+        
+        <div class="campaign-grid">
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/WbMmRLVx/Above_and_Beyond_front_cover.jpg');">
+                </div>
+                <div class="campaign-content">
+                    <h3><em>Above and Beyond</em> magazine</h3>
+                    <p>Lead the planning, development and delivery of KSS's bi-annual supporter magazine. Shape editorial strategy, commission and edit content, and ensure every issue reflects the brand's warm, inspiring voice.</p>
+                    <p>Magazine brings together patient stories, community fundraising features, and clinical insights while embedding clear supporter journeys and calls to action that drive engagement and income.</p>
+                    <a href="https://aakss.org.uk/about-us/above-and-beyond-supporter-magazine/" target="_blank" class="campaign-link">View magazine</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/pLQQzQ7f/Impact_report.jpg');">
+                </div>
+                <div class="campaign-content">
+                    <h3>KSS Annual Report 2024/25</h3>
+                    <p>Led a small team and collaborated with internal and external stakeholders to deliver the charity's first Annual Report that integrated our four goals within our <em>Working Together to Save More Lives</em> strategy. Shaped messaging, wrote and edited core narrative sections, and ghostwrote introductions for CEO, Chair and Board.</p>
+                    <p>Also delivered the charity's first Impact Report 2024/25 alongside the Annual Report, ensuring compliance with Companies House and Charity Commission guidance while creating an engaging, supporter-centred story of impact and accountability.</p>
+                    <a href="https://aakss.org.uk/about-us/financial-information/" target="_blank" class="campaign-link">Read the report</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/g2yy8y5y/Mail_Online.jpg');">
+                </div>
+                <div class="campaign-content">
+                    <h3>MailOnline Exclusives</h3>
+                    <p>Pitched and secured high-impact exclusives for the UK's most-read English-language news website, delivering stories that achieved significant reach. Served as royal correspondent, with a proven ability to identify designers and trends worn by members of the royal family that would resonate globally within minutes.</p>
+                    <div class="campaign-stat">Stories reached millions around the world across online, print and socials</div>
+                    <a href="https://www.dailymail.co.uk/news/article-10818849/Queen-attends-Platinum-Jubilee-Celebration-Tom-Cruise-Helen-Mirren-perform.html" target="_blank" class="campaign-link">The late Queen's Platinum Jubilee coverage (nearly 200k shares in 12 hours)</a><br>
+                    <a href="https://www.dailymail.co.uk/news/article-10712583/Boris-Johnson-faces-pressure-families-lost-loved-ones-resign-Partygate-scandal.html" target="_blank" class="campaign-link">EXCLUSIVE: Boris Johnson Partygate coverage</a><br>
+                    <a href="https://www.dailymail.co.uk/news/article-10301643/New-register-child-beaters-planned-following-campaign-adoptive-mother-Tony-Hudgell.html" target="_blank" class="campaign-link">EXCLUSIVE: Paula Hudgell's child protection campaign</a><br>
+                    <a href="https://www.dailymail.co.uk/news/article-10363095/Our-son-Tony-Hickmott-locked-like-animal-21-years-autistic.html" target="_blank" class="campaign-link">EXCLUSIVE: Hidden injustice in our care system</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image emoji-only">📊</div>
+                <div class="campaign-content">
+                    <h3>MailOnline Live Blog Format</h3>
+                    <p>Identified opportunity and pitched the creation of a dedicated live blog format when Russia invaded Ukraine in February 2022. Used data to demonstrate that social media users were more likely to follow a live blog than click individual stories, securing buy-in from the Editor-in-Chief.</p>
+                    <p>Collaborated with internal designers and external agencies to build the format. The live blog received additional revenue from ads and overtook the main banner as the most popular story every day that month. It remains in use today for all major events.</p>
+                    <a href="https://www.dailymail.co.uk/news/russia-ukraine-conflict/index.html?page=4" target="_blank" class="campaign-link">View live blog format</a>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/Bn55H5yB/Living_Legends.jpg');">
+                </div>
+                <div class="campaign-content">
+                    <h3><em>Living Legends</em> launch</h3>
+                    <p>Played a pivotal role in launching <em>Living Legends</em>, a quarterly publication celebrating iconic music figures at Hearst. Debut issue featuring Taylor Swift was strategically timed with her London Eras Tour dates.</p>
+                    <div class="campaign-stat">35% increase in sales during Taylor Swift's Wembley shows</div>
+                </div>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image" style="background-image: url('https://i.postimg.cc/ht88T8ws/queen_tribute_cover.jpg');">
+                </div>
+                <div class="campaign-content">
+                    <h3>Queen Elizabeth II Tribute Issue</h3>
+                    <p>Led a small team to create a respectful and timely tribute following the passing of Queen Elizabeth II. With news announced at 15:10 of Her late Majesty's passing, and <em>Best</em> magazine due to press at 5pm, I developed and delivered a complete commemorative issue.</p>
+                    <p>We were the first magazine on newsstands with a tribute issue - it was the highest-selling issue in our magazine's history. Our striking black and white portrait of the late monarch was first of its kind in the magazine sector, with major titles following our editorial lead.</p>
+                    <a href="https://www.ebay.co.uk/itm/364586428573" target="_blank" class="campaign-link">View tribute issue</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills">
+        <h2>Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Brand & Strategy</h3>
+                <ul>
+                    <li>Brand Strategy & Messaging</li>
+                    <li>Tone of Voice Development</li>
+                    <li>Campaign Development</li>
+                    <li>Integrated Communications</li>
+                    <li>Stakeholder Management</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Content & Editorial</h3>
+                <ul>
+                    <li>Editorial Leadership</li>
+                    <li>Content Strategy</li>
+                    <li>Storytelling & Copywriting</li>
+                    <li>Editorial Judgement</li>
+                    <li>Research Translation</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Digital & Media</h3>
+                <ul>
+                    <li>Social Media Strategy</li>
+                    <li>SEO & Analytics</li>
+                    <li>Media Relations</li>
+                    <li>Crisis Communications</li>
+                    <li>Video Production</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Leadership & Operations</h3>
+                <ul>
+                    <li>Team Management</li>
+                    <li>Agency Management</li>
+                    <li>Budget Management</li>
+                    <li>Workflow Optimisation</li>
+                    <li>Performance Measurement</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience">
+        <h2>Experience</h2>
+        
+        <div class="experience-item">
+            <h3>Communications & Marketing Copy Manager</h3>
+            <p class="company">Air Ambulance Charity Kent Surrey Sussex (KSS)</p>
+            <p class="date">January 2025 – Present</p>
+            <ul>
+                <li>Lead the organisation's brand voice and messaging across press, digital, social, CRM, print and events, ensuring clarity, consistency and impact across campaigns reaching two million supporters</li>
+                <li>Own and protect tone of voice across all communications, shaping campaigns and creative assets that inspire audiences and strengthen brand trust</li>
+                <li>Develop and deliver integrated national campaigns that drive awareness, engagement and fundraising performance across multiple audience groups</li>
+                <li>Translate complex clinical, research and innovation-led information into accessible, emotionally resonant storytelling that builds credibility and understanding, resulting in national media coverage and broadcast features</li>
+                <li>Work closely with internal teams and external partners to deliver cohesive, insight-led storytelling across all touchpoints</li>
+                <li>Advise the CEO and senior leadership team on messaging, reputation and campaign strategy, including speeches, statements and high-profile announcements</li>
+                <li>Lead strategic partnerships and collaborations, including a national campaign with Netflix for Critical: Between Life and Death, generating significant reach and positioning KSS as a sector leader</li>
+                <li>Manage agencies, freelancers and cross-functional teams, setting clear briefs and delivering campaigns on time and to budget</li>
+                <li>Use performance insight and reporting to refine messaging, optimise campaigns and improve results</li>
+                <li>Support senior leadership with reputational risk management and media responses during high-pressure situations</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Acting Features Editor</h3>
+            <p class="company">Hearst</p>
+            <p class="date">September 2022 – December 2024</p>
+            <ul>
+                <li>Led editorial operations, managing a team and overseeing 50+ monthly content pieces across digital and print, consistently meeting deadlines and improving output efficiency by 35%</li>
+                <li>Enhanced SEO and social media strategies, maximising visibility, engagement, and reach across channels</li>
+                <li>Directed editorial strategy and execution for Hearst's digital platforms, aligning content with brand objectives to drive substantial audience growth and engagement</li>
+                <li>Spearheaded Cosmopolitan's first-ever live beauty shopping event on TikTok (153.7K followers, 15.1M likes), delivering an interactive experience for 3,000 viewers with a 21% click-through rate. Surpassed TikTok benchmarks in viewing duration and order value, achieving 25% of purchases from first-time buyers, with cross-promotion across all Cosmo social channels</li>
+                <li>Analysed website traffic, engagement, and feedback to inform content performance improvements, leading to consistent top rankings for Best's real-life features on Readly</li>
+                <li>Partnered with marketing and social media teams to integrate content into broader campaigns and brand initiatives</li>
+                <li>Launched two original podcasts for the Best title, leading the projects from concept to final execution to monetise the brand, including conceptualising the dating podcast Suddenly Single with the Editor-in-Chief. Booked guests and managed production in the early stages before hiring a podcast assistant</li>
+                <li>Fostered an environment of creativity and collaboration within the editorial team, mentoring and guiding staff to encourage growth and innovation</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>News Reporter</h3>
+            <p class="company">MailOnline</p>
+            <p class="date">September 2021 – September 2022</p>
+            <ul>
+                <li>Worked on the UK's most-read news website, delivering high-impact stories in a fast-paced, 24/7 newsroom environment</li>
+                <li>Led breaking news coverage and live blogs during major national and global events, creating MailOnline's Ukraine live blog format, which became the most popular story daily and is still in use today</li>
+                <li>Pitched and secured exclusives that achieved significant national and international reach. Assigned to all royal appearances due to proven ability to identify brands and trends that would circulate globally within minutes</li>
+                <li>Managed bi-weekly Snapchat shifts for both UK and US audiences, using analytics to curate the most popular stories for younger demographics and ensuring the platform led on news engagement for those audiences</li>
+                <li>Built strong relationships with editors and stakeholders, influencing editorial direction through insight and data-led recommendations</li>
+                <li>Developed a sharp instinct for emerging trends, cultural moments and audience behaviour, applying this to real-time storytelling at scale</li>
+                <li>Monitored social media analytics daily to gauge campaign success and identify opportunities, assisting the Head of Social with live event coordination and audience engagement strategies</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Features Writer</h3>
+            <p class="company">Bauer Media</p>
+            <p class="date">August 2019 – September 2021</p>
+            <ul>
+                <li>Produced engaging content across digital, print and social platforms for Bella, Heat, Crime Monthly and Closer magazine, sourcing and pitching stories, conducting daily interviews and delivering compelling copy under tight deadlines</li>
+                <li>Managed Bella's Facebook page, increasing engagement and reach by 40% through strategic SEO and audience insights</li>
+                <li>Identified new monetisation opportunities during the Covid pandemic, leading to the successful launch of The Boost, a lifestyle blog that expanded the brand's digital presence across social platforms</li>
+                <li>Built a strong network of case studies, influencers, freelancers and PR professionals, strengthening industry relationships and editorial reach</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Communications Officer</h3>
+            <p class="company">Medway NHS Foundation Trust</p>
+            <p class="date">January 2015 – August 2021</p>
+            <ul>
+                <li>Developed a regular feature in the News@Medway newsletter highlighting departmental heroes in response to the hospital's placement in special measures by the Care Quality Commission (CQC), boosting staff morale</li>
+                <li>Collaborated with clinicians, consultants and nursing staff to transform technical medical insights into accessible summaries for lay readers, enhancing public understanding of the Trust's work</li>
+                <li>Redesigned the newsletter based on staff feedback, creating engaging features that dramatically increased online engagement and encouraged colleagues to come forward for interviews, celebrating staff during a challenging period</li>
+                <li>During the unprecedented Covid-19 pandemic, maintained the communications role while simultaneously working in-hospital administrative shifts in response to critical staff shortages, providing frontline support while continuing to deliver internal communications</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Freelance Showbiz Journalist</h3>
+            <p class="company">Bang Showbiz</p>
+            <p class="date">July 2018 – August 2019</p>
+            <ul>
+                <li>While working on the UK editorial desk, quickly sourced and wrote a high volume of stories to meet strict quotas while consistently achieving performance targets and KPIs</li>
+                <li>Conducted thorough picture research and ensured full compliance with media law, thereby safeguarding the accuracy and legality of all published content</li>
+            </ul>
+        </div>
+
+        <div class="experience-item">
+            <h3>Broadcast Intern</h3>
+            <p class="company">KMTV</p>
+            <p class="date">April 2017 – July 2018</p>
+        </div>
+
+        <div class="experience-item">
+            <h3>Multimedia Journalism Intern</h3>
+            <p class="company">KM Group</p>
+            <p class="date">April 2016 – April 2016</p>
+        </div>
+
+        <div class="experience-item">
+            <h3>PR, Media, and Marketing Intern</h3>
+            <p class="company">Revlon Professional</p>
+            <p class="date">July 2012 – August 2014</p>
+        </div>
+    </section>
+
+    <footer>
+        <h2>Let's Connect</h2>
+        <p>Available for copy leadership, brand strategy, and senior communications roles.</p>
+        <div class="footer-links">
+            <a href="mailto:kayaterry1@gmail.com">kayaterry1@gmail.com</a>
+            <a href="tel:+447414929122">+44 7414 929122</a>
+            <a href="https://www.linkedin.com/in/kvterry" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+</body>
+</html>
